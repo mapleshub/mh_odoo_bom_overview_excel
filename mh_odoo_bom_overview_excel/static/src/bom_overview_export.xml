@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+   <t t-name="custom_mrp_bom_line.BomOverviewControlPanel" t-inherit="mrp.BomOverviewControlPanel" t-inherit-mode="extension">
+       <xpath expr="//*[@class='o_list_buttons o_mrp_bom_report_buttons d-xl-flex gap-xl-1']" position="inside">
+           <a role="button" class="btn btn-primary"
+              t-att-href="'/mrp/bom_overview/export?bom_id='+(props.data.bom_id || '')"
+              target="_blank">
+               Export
+           </a>
+       </xpath>
+   </t>
+</templates>
