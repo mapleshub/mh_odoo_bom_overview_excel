@@ -25,14 +25,14 @@
     'description': """
 MaplesHub – BoM Overview → Excel Export (Odoo 18)
 
-Export the exact data from Odoo’s BoM Overview to Excel, including parent & sub-BoMs and all component lines, using the same core helpers as the official PDF report.
+Export the exact data from Odoo’s BoM Overview to Excel, including parent & sub-BoMs and all component lines, 
+using the same core helpers as the official PDF report.
 
 Key Features
 ------------
 - Flat Excel of the entire multi-level BoM (parents, sub-BoMs, components)
-- No recomputation: relies on report.mrp.report_bom_structure._get_bom_data
+- No re computation: relies on report.mrp.report_bom_structure._get_bom_data
 - Columns: Product, Country Codes, Qty (UoM), Lead Time (d), Route, BoM Cost, Product Cost
-- HTTP route: /mrp/bom_overview/<int:bom_id>/export_xlsx (auth='user')
 
 Notes
 -----
