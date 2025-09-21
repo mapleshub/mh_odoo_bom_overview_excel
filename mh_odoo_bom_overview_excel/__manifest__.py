@@ -20,7 +20,7 @@
 #
 #############################################################################
 {
-    'name': 'MaplesHub BoM Overview Excel Export',
+    'name': 'MaplesHub BoM Overview Export',
     'summary': "Excel Export full BOM overview (parents, sub-BOMs, components)",
     'description': """
 MaplesHub – BoM Overview → Excel Export (Odoo 18)
