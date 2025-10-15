@@ -7,12 +7,13 @@ import xlsxwriter
 class BomExportController(http.Controller):
 
    @http.route('/mrp/bom_overview/export', type='http', auth='user', csrf=False)
-   def export_bom_overview_xlsx(self, bom_id=None, **kw):
+   def export_bom_overview_xlsx(self, bom_id=None, quantity=1, **kw):
        bom = request.env['mrp.bom'].browse(int(bom_id))
+       qty = (bom.product_qty * float(quantity)) or 1
        if not bom.exists():
            return request.not_found()
 
-       rows = self._collect_bom_rows(bom)
+       rows = self._collect_bom_rows(bom, qty)
 
        output = io.BytesIO()
        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
@@ -40,7 +41,7 @@ class BomExportController(http.Controller):
                ('Content-Disposition', content_disposition(fname)),
            ]
        )
-   def _collect_bom_rows(self, bom):
+   def _collect_bom_rows(self, bom, qty):
        """Flat list of BOTH BOM nodes and component rows, using BoM Overview data."""
        # Pick the product & a warehouse (you can pass warehouse via context if needed)
        product = (
@@ -56,7 +57,7 @@ class BomExportController(http.Controller):
            bom=bom,
            warehouse=warehouse,
            product=product,
-           line_qty=bom.product_qty or 1,
+           line_qty=qty,
            level=0,
        )
        rows = []

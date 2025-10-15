@@ -3,7 +3,7 @@
    <t t-name="mh_odoo_bom_overview_excel.BomOverviewControlPanel" t-inherit="mrp.BomOverviewControlPanel" t-inherit-mode="extension">
        <xpath expr="//*[@class='o_list_buttons o_mrp_bom_report_buttons d-xl-flex gap-xl-1']" position="inside">
            <a role="button" class="btn btn-primary"
-              t-att-href="'/mrp/bom_overview/export?bom_id='+(props.data.bom_id || '')"
+              t-att-href="'/mrp/bom_overview/export?bom_id='+(props.data.bom_id || '')+ '&amp;quantity=' + (props.data.quantity || '')"
               target="_blank">
                Export
            </a>
